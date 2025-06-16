@@ -6,6 +6,7 @@ class CustomNavigationBar extends StatefulWidget {
   final Function(GlobalKey) onNavigate;
   final GlobalKey heroKey;
   final GlobalKey aboutKey;
+  final GlobalKey skillsKey;
   final GlobalKey projectsKey;
   final GlobalKey contactKey;
 
@@ -14,6 +15,7 @@ class CustomNavigationBar extends StatefulWidget {
     required this.onNavigate,
     required this.heroKey,
     required this.aboutKey,
+    required this.skillsKey,
     required this.projectsKey,
     required this.contactKey,
   });
@@ -91,6 +93,8 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
                 const SizedBox(width: 30),
                 _buildNavItem('About', widget.aboutKey),
                 const SizedBox(width: 30),
+                _buildNavItem('Skills', widget.skillsKey),
+                const SizedBox(width: 30),
                 _buildNavItem('Projects', widget.projectsKey),
                 const SizedBox(width: 30),
                 _buildNavItem('Contact', widget.contactKey),
@@ -141,6 +145,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
           children: [
             _buildMobileNavItem('Home', widget.heroKey),
             _buildMobileNavItem('About', widget.aboutKey),
+            _buildMobileNavItem('Skills', widget.skillsKey),
             _buildMobileNavItem('Projects', widget.projectsKey),
             _buildMobileNavItem('Contact', widget.contactKey),
           ],

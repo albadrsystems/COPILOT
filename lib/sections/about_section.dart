@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class AboutSection extends StatelessWidget {
   const AboutSection({super.key});
@@ -46,10 +45,6 @@ class AboutSection extends StatelessWidget {
               ResponsiveRowColumnItem(
                 rowFlex: 1,
                 child: _buildBiographySection(isDesktop),
-              ),
-              ResponsiveRowColumnItem(
-                rowFlex: 1,
-                child: _buildSkillsSection(isDesktop),
               ),
             ],
           ),
@@ -137,122 +132,4 @@ class AboutSection extends StatelessWidget {
       ],
     );
   }
-
-  Widget _buildSkillsSection(bool isDesktop) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'My Skills',
-          style: GoogleFonts.poppins(
-            fontSize: isDesktop ? 32 : 24,
-            fontWeight: FontWeight.bold,
-            color: Colors.black87,
-          ),
-        ),
-        const SizedBox(height: 30),
-        _buildSkillCategory('Frontend Development', [
-          SkillItem('Flutter', 0.9, FontAwesomeIcons.mobile),
-          SkillItem('Dart', 0.9, FontAwesomeIcons.code),
-          SkillItem('React', 0.7, FontAwesomeIcons.react),
-          SkillItem('JavaScript', 0.8, FontAwesomeIcons.js),
-        ]),
-        const SizedBox(height: 30),
-        _buildSkillCategory('Backend & Tools', [
-          SkillItem('Firebase', 0.8, FontAwesomeIcons.fire),
-          SkillItem('Node.js', 0.7, FontAwesomeIcons.nodeJs),
-          SkillItem('Git', 0.9, FontAwesomeIcons.git),
-          SkillItem('Figma', 0.8, FontAwesomeIcons.figma),
-        ]),
-      ],
-    );
-  }
-
-  Widget _buildSkillCategory(String title, List<SkillItem> skills) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          title,
-          style: GoogleFonts.poppins(
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
-            color: Colors.black87,
-          ),
-        ),
-        const SizedBox(height: 15),
-        ...skills.map((skill) => _buildSkillBar(skill)),
-      ],
-    );
-  }
-
-  Widget _buildSkillBar(SkillItem skill) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 15),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  Icon(
-                    skill.icon,
-                    size: 16,
-                    color: const Color(0xFF6366F1),
-                  ),
-                  const SizedBox(width: 8),
-                  Text(
-                    skill.name,
-                    style: GoogleFonts.poppins(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.grey[700],
-                    ),
-                  ),
-                ],
-              ),
-              Text(
-                '${(skill.level * 100).round()}%',
-                style: GoogleFonts.poppins(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                  color: const Color(0xFF6366F1),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 8),
-          Container(
-            height: 6,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              color: Colors.grey[300],
-              borderRadius: BorderRadius.circular(3),
-            ),
-            child: FractionallySizedBox(
-              alignment: Alignment.centerLeft,
-              widthFactor: skill.level,
-              child: Container(
-                decoration: BoxDecoration(
-                  gradient: const LinearGradient(
-                    colors: [Color(0xFF6366F1), Color(0xFF8B5CF6)],
-                  ),
-                  borderRadius: BorderRadius.circular(3),
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class SkillItem {
-  final String name;
-  final double level;
-  final IconData icon;
-
-  SkillItem(this.name, this.level, this.icon);
 }

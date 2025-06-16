@@ -3,6 +3,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 import '../widgets/navigation_bar.dart';
 import '../sections/hero_section.dart';
 import '../sections/about_section.dart';
+import '../sections/skills_section.dart';
 import '../sections/projects_section.dart';
 import '../sections/contact_section.dart';
 
@@ -17,6 +18,7 @@ class _PortfolioHomeState extends State<PortfolioHome> {
   final ScrollController _scrollController = ScrollController();
   final GlobalKey _heroKey = GlobalKey();
   final GlobalKey _aboutKey = GlobalKey();
+  final GlobalKey _skillsKey = GlobalKey();
   final GlobalKey _projectsKey = GlobalKey();
   final GlobalKey _contactKey = GlobalKey();
 
@@ -51,6 +53,7 @@ class _PortfolioHomeState extends State<PortfolioHome> {
                 children: [
                   HeroSection(key: _heroKey),
                   AboutSection(key: _aboutKey),
+                  SkillsSection(key: _skillsKey),
                   ProjectsSection(key: _projectsKey),
                   ContactSection(key: _contactKey),
                 ],
@@ -64,6 +67,7 @@ class _PortfolioHomeState extends State<PortfolioHome> {
                 onNavigate: _scrollToSection,
                 heroKey: _heroKey,
                 aboutKey: _aboutKey,
+                skillsKey: _skillsKey,
                 projectsKey: _projectsKey,
                 contactKey: _contactKey,
               ),
